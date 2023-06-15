@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+set -euxo pipefail
+
+# Copy shell settings
+cp .bashrc ~/
+cp .inputrc ~/
+
+# Copy emacs configs
+cp -r .emacs.d ~/

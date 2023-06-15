@@ -9,4 +9,9 @@
 ;; Hide welcome screen
 (setq inhibit-startup-message t)
 
+;; Display line numbers in most modes
+(add-hook 'conf-unix-mode-hook #'display-line-numbers-mode)
+(add-hook 'prog-mode-hook #'display-line-numbers-mode)
+(add-hook 'text-mode-hook #'display-line-numbers-mode)
+
 (load-theme 'tsdh-dark)
