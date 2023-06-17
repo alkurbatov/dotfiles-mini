@@ -33,6 +33,7 @@ alias apt='sudo apt'
 alias dnf='sudo dnf'
 alias poweroff='sudo poweroff'
 alias reboot='sudo reboot'
+alias reload-bash='source ~/.bashrc'
 alias systemctl='sudo systemctl'
 
 # Python
