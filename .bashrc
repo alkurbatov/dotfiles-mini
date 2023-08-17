@@ -25,6 +25,9 @@ export PYTHON_KEYRING_BACKEND=keyring.backends.null.Keyring
 # Tell GPG which tty it should use
 export GPG_TTY=$(tty)
 
+# Enable true color support in terminal for proper colors in Emacs
+export COLORTERM=truecolor
+
 ### Aliases
 
 # System aliases
