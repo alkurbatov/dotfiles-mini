@@ -1,2 +1,5 @@
+# OS X trash
+.DS_Store
+
 # Backup files created by Emacs and Vim
 *~

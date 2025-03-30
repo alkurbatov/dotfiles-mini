@@ -3,8 +3,6 @@
 (add-to-list 'load-path
              (expand-file-name "lisp" user-emacs-directory))
 
-(require 'nano-sensitive)
-
 ;; Turn off menu bar, tool bar, and scroll bar.
 (if (fboundp 'menu-bar-mode)   (menu-bar-mode   -1))
 (if (fboundp 'tool-bar-mode)   (tool-bar-mode   -1))
@@ -22,7 +20,7 @@
 (add-hook 'text-mode-hook #'display-line-numbers-mode)
 
 ;; Backup
-(setq backup-directory-alist '(("." . "~/.backups"))
+(setq backup-directory-alist `(("." . ,(concat user-emacs-directory "backups/")))
       make-backup-files t     ; backup of a file the first time it is saved.
       backup-by-copying t     ; don't clobber symlinks
       vc-make-backup-files t  ; backup version controlled files too as we don't commit on every save
@@ -37,12 +35,6 @@
                               ;  (default: 30)
       auto-save-interval 200) ; number of keystrokes between auto-saves
                               ;  (default: 300)
-
-;; Exclude sensitive data from backups
-(add-to-list 'auto-mode-alist '("\\.gpg$" . sensitive-mode))
-(add-to-list 'auto-mode-alist '("\\.netrc$" . sensitive-mode))
-
-(load-theme 'tsdh-dark)
 
 ;; y/n for  answering yes/no questions
 (fset 'yes-or-no-p 'y-or-n-p)

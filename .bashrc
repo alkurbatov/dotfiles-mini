@@ -28,6 +28,10 @@ export GPG_TTY=$(tty)
 # Enable true color support in terminal for proper colors in Emacs
 export COLORTERM=truecolor
 
+# GitLab access for automation in Makefiles
+export GITLAB_LOGIN=aleksandr.kurbatov
+export GITLAB_TOKEN=Hbv444q5iTEbMxpBqD1m
+
 ### Aliases
 
 # System aliases
@@ -89,13 +93,21 @@ fi
 
 # Colorize man pages
 man() {
- env \
-  LESS_TERMCAP_mb=$(printf "\e[1;36m") \
-  LESS_TERMCAP_md=$(printf "\e[1;36m") \
-  LESS_TERMCAP_me=$(printf "\e[0m") \
-  LESS_TERMCAP_se=$(printf "\e[0m") \
-  LESS_TERMCAP_so=$(printf "\e[1;44;33m") \
-  LESS_TERMCAP_ue=$(printf "\e[0m") \
-  LESS_TERMCAP_us=$(printf "\e[1;32m") \
-  man "$@"
+  env \
+      LESS_TERMCAP_mb=$(printf "\e[1;36m") \
+      LESS_TERMCAP_md=$(printf "\e[1;36m") \
+      LESS_TERMCAP_me=$(printf "\e[0m") \
+      LESS_TERMCAP_se=$(printf "\e[0m") \
+      LESS_TERMCAP_so=$(printf "\e[1;44;33m") \
+      LESS_TERMCAP_ue=$(printf "\e[0m") \
+      LESS_TERMCAP_us=$(printf "\e[1;32m") \
+      man "$@"
+}
+
+# Clean intermediate Docker images, unused volumes, networks and cache
+docker-clean() {
+    docker image prune -f && \
+        docker volume prune -f && \
+        docker network prune -f && \
+        docker builder prune -f
 }
